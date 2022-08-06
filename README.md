@@ -35,6 +35,7 @@ Here are some questions and answers about why I made some decisions
   - **http-status**: JS library to use consistent http status codes
   - **jest**: JS library to make tests
   - **ts-jest**: TS library to perform jest tests on Typescript
+  - **glob**: Match files using the pattern. Used to register routes automatically using a pattern.
 
 ## Nice to have
 

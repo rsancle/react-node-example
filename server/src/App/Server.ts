@@ -1,8 +1,9 @@
 import bodyParser from 'body-parser';
-import express, { Express } from 'express';
+import express, { Express, Router } from 'express';
 import { Server as ActiveServer } from 'http';
 import { errorHandler } from './Errors/handler';
 import NotFound from './Errors/NotFound';
+import registerRoutes from './Routes';
 
 export class Server {
     private app: Express;
@@ -33,9 +34,12 @@ export class Server {
     }
 
     private addRoutes(): void {
-        this.app.use(bodyParser.json());
+        const router = Router();
+        this.app.use(router);
+        registerRoutes(router);
         this.app.all('*', () => {
             throw new NotFound();
         })
     }
 }
+
