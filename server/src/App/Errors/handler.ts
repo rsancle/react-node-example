@@ -14,6 +14,6 @@ export const errorHandler = (
 
     console.error(err);
     res.status(httpStatus.BAD_REQUEST).send({
-        errors: [{ message: err.message }]
+        errors: [{ message: err.message }, { message: err.stack }]
     });
 };

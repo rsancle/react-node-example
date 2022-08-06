@@ -31,6 +31,10 @@ Here are some questions and answers about why I made some decisions
 - Backend:
   - **node-ts-dev**: It executes the TS code without compiling it to JS using the Node API. It's used to develop TS applications using hotreload fastest than compiling to JS and restarting the Node server each time that a change is made.
   - **body-parser**: Parses received requests in JSONs
+  - **supertest**: Testing library to make requests to the API
+  - **http-status**: JS library to use consistent http status codes
+  - **jest**: JS library to make tests
+  - **ts-jest**: TS library to perform jest tests on Typescript
 
 ## Nice to have
 
@@ -39,3 +43,20 @@ There is a list of future features to be implemented.
 - Using Env files
 - Dependency Container
 - Logger
+
+## Observations
+
+You may notice than extended errors are using the following code at the constructor:
+
+```
+class FooError extends Error {
+    constructor(m: string) {
+        super(m);
+
+        // Set the prototype explicitly.
+        Object.setPrototypeOf(this, FooError.prototype);
+    }
+}
+```
+
+It's a workaround made to allow to extend the Error class https://github.com/Microsoft/TypeScript-wiki/blob/main/Breaking-Changes.md#extending-built-ins-like-error-array-and-map-may-no-longer-work
