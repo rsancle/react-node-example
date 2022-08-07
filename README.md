@@ -43,6 +43,7 @@ Here are some questions and answers about why I made some decisions
   - **cookie-session**: Store session on cookie
   - **jsonwebtoken**: Use jwt to sign data sotred on the session
   - **express-async-errors**: Allows to handle errors executed from async functions
+  - **rickmortyapi** Http Client to make requests to the api
 
 ## Nice to have
 

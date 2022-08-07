@@ -6,6 +6,7 @@ import { errorHandler } from './Errors/handler';
 import NotFound from './Errors/NotFound';
 import registerRoutes from './Routes';
 import cookieSession from 'cookie-session';
+import { loggedUser } from './Middlewares/loggedUser';
 
 export class Server {
     private app: Express;
@@ -37,6 +38,7 @@ export class Server {
             signed: false,
             secure: true
         }));
+        this.app.use(loggedUser);
 
     }
 
