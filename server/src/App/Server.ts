@@ -1,30 +1,54 @@
 import bodyParser from 'body-parser';
-import express, { Express } from 'express';
+import express, { Express, Router } from 'express';
+import 'express-async-errors';
+import { Server as ActiveServer } from 'http';
 import { errorHandler } from './Errors/handler';
 import NotFound from './Errors/NotFound';
+import registerRoutes from './Routes';
+import cookieSession from 'cookie-session';
+import { loggedUser } from './Middlewares/loggedUser';
 
 export class Server {
     private app: Express;
     private port: number;
-    constructor() {
+    private server?: ActiveServer;
+
+    constructor(port: number = 3000) {
         this.app = express();
-        this.port = 3000;
+        this.port = port;
         this.addMiddlewares();
         this.addRoutes();
         this.app.use(errorHandler);
     }
-    public start(): void {
-        this.app.listen(this.port);
+    public async start(): Promise<void> {
+        this.server = await this.app.listen(this.port);
+    }
+
+    public stop(): void {
+        this.server?.close();
+    }
+
+    public getServer(): ActiveServer | undefined {
+        return this.server;
     }
 
     private addMiddlewares(): void {
         this.app.use(bodyParser.json());
+        this.app.use(cookieSession({
+            signed: false,
+            secure: true
+        }));
+        this.app.use(loggedUser);
+
     }
 
     private addRoutes(): void {
-        this.app.use(bodyParser.json());
-        this.app.all('*', () => {
+        const router = Router();
+        this.app.use(router);
+        registerRoutes(router);
+        this.app.all('*', async () => {
             throw new NotFound();
         })
     }
 }
+

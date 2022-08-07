@@ -8,3 +8,16 @@ services:
       - 3000:3000
     volumes:
       - ./server:/server
+    environment:
+      - MONGO_HOST=mongodb://mongo:27017
+      - JWT_KEY=random_key
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:3.6
+    volumes:
+      - mongodata:/data/db
+    ports:
+      - 27017:27017
+volumes:
+  mongodata:

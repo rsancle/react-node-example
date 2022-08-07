@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  node_app_test: 
+    extends: 
+      file: docker-compose.dev.yml
+      service: node_app
+    build:
+      dockerfile: ./server/Dockerfile.test
+    ports:
+      - 5000:5000
