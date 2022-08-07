@@ -46,7 +46,6 @@ There is a list of future features to be implemented.
 - Using Env files
 - Dependency Container
 - Logger
-- Deacoplate uuid from CreateUser.ts
 
 ## Observations
 
