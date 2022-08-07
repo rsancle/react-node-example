@@ -25,6 +25,8 @@ Here are some questions and answers about why I made some decisions
   - I decided to use TS because it allows to me using the JS functionalities plus interfaces and types. It will make the application easier to mantain or take future desitions like moving from Mongo DB to another DB like MySQL. Another thing that I like from TS is that I can encapsulate Interfaces in a package and share it between the backend and the frontend applications, so we can be sure that both applications will "speak the same language" when they are interacting using HTTP requests and responses.
 - **Why I use Mongo DB?**
   - I use Mongo on small applications because it's easy to be implemented. In case we want to move to another DB engine it should be easy since we are implementing an agnostic DB interface.
+- **Why I use uuid instead of DB provided ID?**
+  - I use a library to generate uuid to deacoplate our bussiness logic from the infrastructure. Our application will use the same ID format even if we decide to change the DB engine.
 
 ## Used Dependencies
 
@@ -38,6 +40,9 @@ Here are some questions and answers about why I made some decisions
   - **glob**: Match files using the pattern. Used to register routes automatically using a pattern.
   - **uuid**: Library to create unique id
   - **mongodb**: mongo db client
+  - **cookie-session**: Store session on cookie
+  - **jsonwebtoken**: Use jwt to sign data sotred on the session
+  - **express-async-errors**: Allows to handle errors executed from async functions
 
 ## Nice to have
 

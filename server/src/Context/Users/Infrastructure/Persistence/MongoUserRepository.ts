@@ -7,10 +7,10 @@ export default class MongoUserRepository extends MongoRepository implements User
     save(user: User): Promise<void> {
         return this.persist(user.id, user.toJson());
     }
-    async findById(userId: string): Promise<User | null> {
+    async findByEmail(email: string): Promise<User | null> {
         const collection = await this.collection();
-        const document = await collection.findOne({ _id: userId }) as UserDocument;
-        return document ? User.createFromJson({ ...document, id: userId }) : null;
+        const document = await collection.findOne({ email: email }) as UserDocument;
+        return document ? User.createFromJson({ ...document, id: document._id.toString() }) : null;
     }
 
     protected moduleName(): string {

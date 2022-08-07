@@ -10,6 +10,7 @@ services:
       - ./server:/server
     environment:
       - MONGO_HOST=mongodb://mongo:27017
+      - JWT_KEY=random_key
     depends_on:
       - mongo
   mongo:

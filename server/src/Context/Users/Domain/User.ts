@@ -21,8 +21,7 @@ export default class User implements Jsonable {
     public toJson(): Object {
         return {
             id: this.id,
-            email: this.email,
-            password: this.password
+            email: this.email
         };
     }
 

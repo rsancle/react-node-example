@@ -1,9 +1,11 @@
 import bodyParser from 'body-parser';
 import express, { Express, Router } from 'express';
+import 'express-async-errors';
 import { Server as ActiveServer } from 'http';
 import { errorHandler } from './Errors/handler';
 import NotFound from './Errors/NotFound';
 import registerRoutes from './Routes';
+import cookieSession from 'cookie-session';
 
 export class Server {
     private app: Express;
@@ -31,13 +33,18 @@ export class Server {
 
     private addMiddlewares(): void {
         this.app.use(bodyParser.json());
+        this.app.use(cookieSession({
+            signed: false,
+            secure: true
+        }));
+
     }
 
     private addRoutes(): void {
         const router = Router();
         this.app.use(router);
         registerRoutes(router);
-        this.app.all('*', () => {
+        this.app.all('*', async () => {
             throw new NotFound();
         })
     }
