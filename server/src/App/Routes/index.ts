@@ -2,7 +2,7 @@ import { Router } from 'express';
 import glob from 'glob';
 
 export default function registerRoutes(router: Router) {
-    const routes = glob.sync(__dirname + '/**/*Route.*');
+    const routes = glob.sync(__dirname + '/**/*Routes.*');
     routes.map(route => register(route, router));
 }
 

@@ -36,6 +36,8 @@ Here are some questions and answers about why I made some decisions
   - **jest**: JS library to make tests
   - **ts-jest**: TS library to perform jest tests on Typescript
   - **glob**: Match files using the pattern. Used to register routes automatically using a pattern.
+  - **uuid**: Library to create unique id
+  - **mongodb**: mongo db client
 
 ## Nice to have
 
@@ -44,6 +46,7 @@ There is a list of future features to be implemented.
 - Using Env files
 - Dependency Container
 - Logger
+- Deacoplate uuid from CreateUser.ts
 
 ## Observations
 
