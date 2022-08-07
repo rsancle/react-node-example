@@ -1,5 +1,17 @@
 version: '3.8'
 services:
+  react_app:
+    build:
+      context: .
+      dockerfile: ./client/Dockerfile.dev
+    ports:
+      - 3001:3001
+    volumes:
+      - ./client:/client
+    environment:
+      - BACKEND_APP=http://node_app:3000
+    depends_on:
+      - node_app
   node_app:
     build:
       context: .

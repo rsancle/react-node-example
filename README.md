@@ -17,6 +17,8 @@ The pupose of this application is to create a simple fullstack sampe app that ca
 - Item View Page
 - 404 page
 
+## Commands
+
 ## FAQs
 
 Here are some questions and answers about why I made some decisions
@@ -44,6 +46,9 @@ Here are some questions and answers about why I made some decisions
   - **jsonwebtoken**: Use jwt to sign data sotred on the session
   - **express-async-errors**: Allows to handle errors executed from async functions
   - **rickmortyapi** Http Client to make requests to the api
+- Front end
+  - **react-router-dom**: library to handle routes
+  - **sass**: transpiller from SASS to CSS
 
 ## Nice to have
 
