@@ -9,7 +9,7 @@ services:
     volumes:
       - ./client:/client
     environment:
-      - BACKEND_APP=http://node_app:3000
+      - REACT_APP_BACKEND_APP=http://localhost:3000
     depends_on:
       - node_app
   node_app:

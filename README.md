@@ -17,6 +17,8 @@ The pupose of this application is to create a simple fullstack sampe app that ca
 - Item View Page
 - 404 page
 
+## Folders Structure
+
 ## Commands
 
 ## FAQs
@@ -57,6 +59,9 @@ There is a list of future features to be implemented.
 - Using Env files
 - Dependency Container
 - Logger
+- Routes validation
+- XSS middleware
+- CSRF token on forms
 
 ## Observations
 
