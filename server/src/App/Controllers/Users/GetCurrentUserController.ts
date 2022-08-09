@@ -11,7 +11,7 @@ export default class GetCurrentUserController {
     async run(req: any, res: Response) {
         let user;
         if (req.loggedUser) {
-            const user = await this.action.run(req.loggedUser.email);
+            user = await this.action.run(req.loggedUser.email);
         }
 
         return res.status(OK).send(user || null);

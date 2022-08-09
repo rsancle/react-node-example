@@ -8,7 +8,9 @@ const UserForm = ({ user, onSubmit }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="form" onSubmit={handleSubmit}>
+      <label htmlFor="email">Email</label>
+      <br />
       <input
         type="email"
         name="email"
@@ -20,6 +22,9 @@ const UserForm = ({ user, onSubmit }) => {
           setUser({ ...userModel });
         }}
       />
+      <br />
+      <label htmlFor="password">Password</label>
+      <br />
       <input
         type="password"
         name="password"
@@ -31,7 +36,8 @@ const UserForm = ({ user, onSubmit }) => {
           setUser({ ...userModel });
         }}
       />
-      <input type="submit" value="Submit" />
+      <br />
+      <input className="link" type="submit" value="Submit" />
     </form>
   );
 };

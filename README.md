@@ -131,6 +131,7 @@ There is a list of future features to be implemented.
 - Backend tests
 - Frontend tests
 - Use TS on the frontend
+- Add Event Bus
 
 ## Observations
 
