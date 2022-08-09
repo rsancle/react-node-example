@@ -45,7 +45,10 @@ button,
   display: inline-block;
   padding-top: 0.5em;
   padding-bottom: 0.7em;
-  height: 1.2em;
+}
+a.link,
+input[type="submit"] {
+  height: 1.3em;
 }
 a {
   text-decoration: none;
@@ -88,4 +91,20 @@ h1 {
   height: 300px;
   object-fit: cover;
   object-position: center;
+}
+
+.form {
+  input {
+    margin: 10px 0;
+  }
+  input {
+    height: 30px;
+  }
+}
+
+.not-found {
+  text-align: center;
+  a {
+    font-style: oblique;
+  }
 }
