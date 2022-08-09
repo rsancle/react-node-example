@@ -1,10 +1,10 @@
 import CharacterRepository from "../Domain/Persistence/CharactersRepository";
 
-export class ListCharacters {
+export class GetCharacter {
     constructor(private charactersRepository: CharacterRepository) { }
 
-    async run(page: number = 1) {
-        const pagination = await this.charactersRepository.allByPage(page);
+    async run(id: number) {
+        const pagination = await this.charactersRepository.getCharacterById(id);
         return pagination;
     }
 }

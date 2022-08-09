@@ -13,6 +13,17 @@ export default class MongoUserRepository extends MongoRepository implements User
         return document ? User.createFromJson({ ...document, id: document._id.toString() }) : null;
     }
 
+    async update(id: string, data: Object) {
+        const collection = await this.collection();
+        await collection.updateOne({
+            _id: id
+        }, {
+            $set: {
+                data
+            }
+        });
+    }
+
     protected moduleName(): string {
         return 'users';
     }
