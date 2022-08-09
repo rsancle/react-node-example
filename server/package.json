@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
+    "serve": "node build/src/App/bootstrap.js",
     "dev": "NODE_ENV=dev ts-node-dev --poll --ignore-watch node_modules ./src/App/bootstrap.ts",
     "test": "jest --no-cache --detectOpenHandles --forceExit"
   },

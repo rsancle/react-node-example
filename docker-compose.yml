@@ -1,9 +1,9 @@
 version: '3.8'
 services:
-  react_app:
+  react_app_prod:
     build:
       context: .
-      dockerfile: ./client/Dockerfile.dev
+      dockerfile: ./client/Dockerfile
     ports:
       - 3001:3001
     volumes:
@@ -11,26 +11,26 @@ services:
     environment:
       - REACT_APP_BACKEND_APP=http://localhost:3000
     depends_on:
-      - node_app
-  node_app:
+      - node_app_prod
+  node_app_prod:
     build:
       context: .
-      dockerfile: ./server/Dockerfile.dev
+      dockerfile: ./server/Dockerfile
     ports:
       - 3000:3000
     volumes:
       - ./server:/server
     environment:
-      - MONGO_HOST=mongodb://mongo:27017
+      - MONGO_HOST=mongodb://mongo_prod:27017
       - JWT_KEY=random_key
-      - FRONTEND_ENDPOINT=http://localhost:3001
+      - FRONTEND_ENDPOINT="http://localhost:3001"
     depends_on:
-      - mongo
-  mongo:
+      - mongo_prod
+  mongo_prod:
     image: mongo:3.6
     volumes:
-      - mongodata:/data/db
+      - mongodata-prod:/data/db
     ports:
       - 27017:27017
 volumes:
-  mongodata:
+  mongodata-prod:

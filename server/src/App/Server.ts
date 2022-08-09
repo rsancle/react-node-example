@@ -40,8 +40,9 @@ export class Server {
             signed: false,
             secure: false
         }));
+        const origin = process.env.FRONTEND_ENDPOINT!;
         this.app.use(cors({
-            origin: "http://localhost:3001",
+            origin: origin,
             credentials: true,
         }));
         this.app.use(loggedUser);

@@ -21,7 +21,9 @@ const SignIn = (props) => {
   return (
     <main style={{ padding: "1rem 0" }}>
       <h1>Sign in</h1>
-      <UserForm user={user} onSubmit={signIn} />
+      <div className="container">
+        <UserForm user={user} onSubmit={signIn} />
+      </div>
     </main>
   );
 };

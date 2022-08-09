@@ -1,7 +1,7 @@
 FROM node:18-alpine
 # Install the application's dependencies into the node_modules's cache directory.
 WORKDIR /client
-COPY server/package*.json ./
+COPY client/package*.json ./
 
 COPY . .
 

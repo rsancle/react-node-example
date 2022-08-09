@@ -16,3 +16,9 @@ client-dev-logs:
 	 docker-compose -f docker-compose.dev.yml logs react_app --tail 1000 -f
 server-dev-logs:
 	 docker-compose -f docker-compose.dev.yml logs node_app --tail 1000 -f
+prod-up:
+	docker-compose up -d
+client-logs:
+	 docker-compose logs react_app_prod --tail 1000 -f
+server-logs:
+	 docker-compose logs node_app_prod --tail 1000 -f
