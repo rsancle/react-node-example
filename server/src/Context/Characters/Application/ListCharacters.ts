@@ -1,7 +1,5 @@
 import CharacterRepository from "../Domain/Persistence/CharactersRepository";
 
-
-
 export class ListCharacters {
     constructor(private charactersRepository: CharacterRepository) { }
 

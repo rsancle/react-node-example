@@ -1,8 +1,6 @@
 import { Request, Response } from 'express';
 import { OK } from 'http-status';
 import { ListCharacters } from '../../../Context/Characters/Application/ListCharacters';
-import ApiCharacterRepository from '../../../Context/Characters/Infrastructure/Persistence/ApiCharacterRepository';
-import NotFound from '../../Errors/NotFound';
 import charactersRepositoryProvider from '../../Providers/CharactersRepositoryProvider';
 
 export default class GetPaginatedCharactersController {

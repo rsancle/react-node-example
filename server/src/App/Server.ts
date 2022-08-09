@@ -7,6 +7,7 @@ import NotFound from './Errors/NotFound';
 import registerRoutes from './Routes';
 import cookieSession from 'cookie-session';
 import { loggedUser } from './Middlewares/loggedUser';
+import cors from "cors";
 
 export class Server {
     private app: Express;
@@ -34,9 +35,14 @@ export class Server {
 
     private addMiddlewares(): void {
         this.app.use(bodyParser.json());
+        this.app.set('trust proxy', true);
         this.app.use(cookieSession({
             signed: false,
-            secure: true
+            secure: false
+        }));
+        this.app.use(cors({
+            origin: "http://localhost:3001",
+            credentials: true,
         }));
         this.app.use(loggedUser);
 

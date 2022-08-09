@@ -19,6 +19,6 @@ export default class SignInUserController {
         // Store it on session object 
         req.session = { jwt: userJwt };
 
-        return res.status(OK).send();
+        return res.status(OK).send(existingUser);
     }
 }

@@ -10,6 +10,8 @@ export default class SignInUser {
         if (!passwordsMatch) {
             return null;
         }
-        return user.toJson();
+        let json = user.toJson();
+        delete json.password;
+        return json;
     }
 }
