@@ -14,7 +14,7 @@ const SignUp = () => {
   };
   return (
     <main style={{ padding: "1rem 0" }}>
-      <h2>Sign Up</h2>
+      <h1>Sign Up</h1>
       <UserForm user={user} onSubmit={signIn} />
     </main>
   );

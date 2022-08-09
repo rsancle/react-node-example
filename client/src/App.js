@@ -1,14 +1,10 @@
 import "./App.scss";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Character from "./pages/characters/character";
-import SignIn from "./pages/auth/sign-in";
-import NotFound from "./pages/errors/NotFound";
-import CharactersList from "./pages/characters/characters-list";
 import React, { useEffect } from "react";
-import RequireAuth from "./middlewares/require-auth";
 import { useDispatch } from "react-redux";
 import { currentUser } from "store/slices/auth-slice";
 import useAuth from "hooks/use-auth";
+import Layout from "components/layout";
+import Router from "components/router";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -18,29 +14,9 @@ const App = () => {
   });
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path="characters"
-          element={
-            <RequireAuth>
-              <CharactersList />
-            </RequireAuth>
-          }
-        >
-          <Route
-            path=":characterId"
-            element={
-              <RequireAuth>
-                <Character />
-              </RequireAuth>
-            }
-          ></Route>
-        </Route>
-        <Route path="sign-in" element={<SignIn />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <Layout>
+      <Router />
+    </Layout>
   );
 };
 
