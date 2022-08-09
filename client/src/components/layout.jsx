@@ -1,12 +1,18 @@
 import useAuth from "hooks/use-auth";
 import React from "react";
-
+import AuthService from "../services/auth-service";
 export default function Layout({ children }) {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, user } = useAuth();
+
+  const logout = async () => {
+    await AuthService.signout();
+    window.location.href = "/";
+  };
   const button = isLoggedIn ? (
-    <a className="link" href="/log-out">
-      Log out
-    </a>
+    <>
+      <span>Hello {user.email}!</span>
+      <button onClick={logout}>Log out</button>
+    </>
   ) : (
     <a className="link" href="/sign-up">
       Sign up
@@ -15,7 +21,9 @@ export default function Layout({ children }) {
   return (
     <div>
       <header>
-        <div className="brand"></div>
+        <div className="brand">
+          <a href="/">Rick and Morty Characters</a>
+        </div>
         <div className="user-info">{button}</div>
       </header>
       {children}

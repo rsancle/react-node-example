@@ -9,4 +9,11 @@ const getCharacters = async (page) => {
   return data;
 };
 
-export { getCharacters };
+const getCharacter = async (id) => {
+  const { data } = await axios.get(API_URL + "characters/" + id, {
+    withCredentials: true,
+  });
+  return data;
+};
+
+export { getCharacters, getCharacter };

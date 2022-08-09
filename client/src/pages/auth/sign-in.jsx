@@ -16,7 +16,6 @@ const SignIn = (props) => {
   const signIn = async (userData) => {
     const { email, password } = userData;
     await dispatch(login({ email, password }));
-    props.history.push("/characters");
     window.location.reload();
   };
   return (

@@ -14,14 +14,7 @@ export default class MongoUserRepository extends MongoRepository implements User
     }
 
     async update(id: string, data: Object) {
-        const collection = await this.collection();
-        await collection.updateOne({
-            _id: id
-        }, {
-            $set: {
-                data
-            }
-        });
+        return this.persist(id, data);
     }
 
     protected moduleName(): string {

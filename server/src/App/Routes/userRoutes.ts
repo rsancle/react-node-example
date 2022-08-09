@@ -6,12 +6,13 @@ import GetCurrentUserController from '../Controllers/Users/GetCurrentUserControl
 import { loggedUser } from '../Middlewares/loggedUser';
 import PatchUserController from '../Controllers/Users/PatchUserController';
 import SignOutUserController from '../Controllers/Users/SignOutUserController';
+import { loggedUsersOnly } from '../Middlewares/loggedUsersOnly';
 
 export const register = (router: Router) => {
     router.post('/users/sign-up', (req: Request, res: Response) => (new CreateUserController).run(req, res));
     router.post('/users/sign-in', (req: Request, res: Response) => (new SignInUserController).run(req, res));
-    router.get('/users/sign-out', loggedUser, (req: Request, res: Response) => (new SignOutUserController).run(req, res));
-    router.get('/users', loggedUser, (req: Request, res: Response) => (new FindUserByEmailController).run(req, res));
+    router.get('/users/sign-out', loggedUser, loggedUsersOnly, (req: Request, res: Response) => (new SignOutUserController).run(req, res));
+    router.get('/users', loggedUser, loggedUsersOnly, (req: Request, res: Response) => (new FindUserByEmailController).run(req, res));
     router.get('/users/current', loggedUser, (req: Request, res: Response) => (new GetCurrentUserController).run(req, res));
-    router.patch('/users/:id', loggedUser, (req: Request, res: Response) => (new PatchUserController).run(req, res));
+    router.patch('/users', loggedUser, loggedUsersOnly, (req: Request, res: Response) => (new PatchUserController).run(req, res));
 };

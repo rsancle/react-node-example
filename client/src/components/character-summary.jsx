@@ -6,7 +6,7 @@ import "../styles/components/character-summary.scss";
 const CharactersSummary = ({ character }) => {
   const { user } = useAuth();
   const isFavorite = (characterId) => {
-    if (user.favorites?.contains(characterId)) {
+    if (user.favoriteCharacters?.includes(characterId)) {
       return (
         <li>
           <div className="heart"></div>
