@@ -18,7 +18,9 @@ const SignUp = () => {
   return (
     <main style={{ padding: "1rem 0" }}>
       <h1>Sign Up</h1>
-      <UserForm user={user} onSubmit={signUn} />
+      <div className="container">
+        <UserForm user={user} onSubmit={signUn} />
+      </div>
     </main>
   );
 };

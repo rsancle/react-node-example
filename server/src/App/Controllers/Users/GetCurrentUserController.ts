@@ -9,7 +9,11 @@ export default class GetCurrentUserController {
         this.action = new FindUserByEmail(userRepositoryProvider);
     }
     async run(req: any, res: Response) {
-        const user = await this.action.run(req.loggedUser.email);
+        let user;
+        if (req.loggedUser) {
+            const user = await this.action.run(req.loggedUser.email);
+        }
+
         return res.status(OK).send(user || null);
     }
 }
